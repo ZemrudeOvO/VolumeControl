@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://c83q0fvspefo0"]
+
+[ext_resource type="AudioStream" uid="uid://b1shblhlxnkl4" path="res://resources/媚娃.mp3" id="1_klj2a"]
+[ext_resource type="Script" path="res://ver2_horizonal_bar/ver_2_changeVolume.cs" id="2_iaebp"]
+[ext_resource type="StyleBox" uid="uid://5xv22hsmooe7" path="res://ver2_horizonal_bar/graberTheme.tres" id="2_wf3vu"]
+[ext_resource type="StyleBox" uid="uid://cs2e6s11m3mii" path="res://ver2_horizonal_bar/sliderBgTheme.tres" id="3_ksmy6"]
+[ext_resource type="Script" path="res://ver2_horizonal_bar/ver_2_slider.cs" id="4_dokk6"]
+[ext_resource type="Script" path="res://ver2_horizonal_bar/ver_2_ButtonDisplay.cs" id="5_e7iir"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_vxm6h"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_3vdi0"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_uj04p"]
+
+[sub_resource type="Theme" id="Theme_7kntu"]
+HSlider/icons/grabber = SubResource("ImageTexture_vxm6h")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_3vdi0")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_uj04p")
+HSlider/icons/tick = SubResource("ImageTexture_uj04p")
+HSlider/styles/grabber_area = ExtResource("2_wf3vu")
+HSlider/styles/grabber_area_highlight = ExtResource("2_wf3vu")
+HSlider/styles/slider = ExtResource("3_ksmy6")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_klj2a")
+autoplay = true
+script = ExtResource("2_iaebp")
+
+[node name="HSlider" type="HSlider" parent="." node_paths=PackedStringArray("button")]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 206.0
+offset_right = 267.0
+offset_bottom = 406.0
+theme = SubResource("Theme_7kntu")
+value = 100.0
+script = ExtResource("4_dokk6")
+button = NodePath("../Button")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 222.0
+offset_top = 424.0
+offset_right = 275.0
+offset_bottom = 478.0
+toggle_mode = true
+text = "<"
+script = ExtResource("5_e7iir")

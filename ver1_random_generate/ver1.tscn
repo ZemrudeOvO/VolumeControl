@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="AudioStream" uid="uid://b1shblhlxnkl4" path="res://resources/媚娃.mp3" id="1_qa85r"]
+[ext_resource type="Script" path="res://ver1_random_generate/ver_1_audio.cs" id="2_kqnsy"]
+[ext_resource type="Script" path="res://ver1_random_generate/ver_1_Label.cs" id="3_d0bxm"]
+[ext_resource type="Script" path="res://ver1_random_generate/ver_1_Button.cs" id="4_afhxs"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("button")]
+stream = ExtResource("1_qa85r")
+autoplay = true
+script = ExtResource("2_kqnsy")
+button = NodePath("../Button")
+
+[node name="Label" type="Label" parent="." node_paths=PackedStringArray("button")]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 58.0
+offset_right = 526.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 54
+text = "default"
+script = ExtResource("3_d0bxm")
+button = NodePath("../Button")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 244.0
+offset_right = 428.0
+offset_bottom = 332.0
+theme_override_font_sizes/font_size = 48
+text = "Change"
+script = ExtResource("4_afhxs")
